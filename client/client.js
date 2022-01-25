@@ -16,7 +16,7 @@ if (!WALLET_PRIVATE_KEY) {
   throw "Provide wallet key as export WALLET_PRIVATE_KEY='KEY'"
 }
 
-let DECODER = new InputDataDecoder(PROXY_ABI)
+let DECODER = new InputDataDecoder(ERC20_ABI)
 require('console-stamp')(console, '[HH:MM:ss.l]');
 
 const wallet = new ethers.Wallet(WALLET_PRIVATE_KEY);
@@ -57,9 +57,9 @@ async function reason(provider, hash) {
     }
 }
 
-async function get_all_qidao_vaults(pool_contract_address) {
+async function get_all_qidao_vaults(pool_contract_address, cost_value) {
   let abi = QIDAO_VAULT_ABI_WETH
-  let max_vault_nr = 24000
+  let max_vault_nr = 100
   let tokenName = ''
   let pool_contract = await new ethers.Contract(pool_contract_address, abi, signer)
   if (pool_contract_address == "0x595b3e98641c4d66900a24aa6ada590b41ef85aa") {
@@ -81,8 +81,10 @@ async function get_all_qidao_vaults(pool_contract_address) {
         } else {
           check_collateral_percentage = (parseInt(await pool_contract.checkCollateralPercentage(i))).toFixed(4)
         }
-        if (check_cost > 2) {
+        if (check_cost >= cost_value) {
           console.log(`Vault ${i} is liquidable ${is_liquidable}. Cost and extract: ${check_cost} MAI, ${check_extract} ${tokenName}, collat % ${check_collateral_percentage}`)
+        } else {
+          //console.log(`Vault ${i} is not worth it ${check_cost} < ${cost_value}`)
         }
       }
     } catch (ex) {}
@@ -122,11 +124,12 @@ async function main() {
 
   if (process.argv[2] == 'find_liquidations') {
     let vaults = Object.keys(VAULT_CONTRACTS)
+    let cost_value = process.argv[3] || 0
     for (let i = 0; i < vaults.length; i++) {
       let vault_name = vaults[i]
       let pool_contract = VAULT_CONTRACTS[vault_name]
-      console.log(`Getting all pools for ${pool_contract} ${vault_name}`)
-      get_all_qidao_vaults(pool_contract, process.argv[3], process.argv[4])
+      console.log(`Getting all pools for ${pool_contract} ${vault_name} with cost value higher than ${cost_value} MAI`)
+      get_all_qidao_vaults(pool_contract, cost_value)
     }
   }
 
