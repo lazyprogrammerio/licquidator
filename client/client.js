@@ -2,6 +2,7 @@ const ethers = require("ethers")
 const Web3 = require("web3")
 const BigNumber = require('big-number')
 const InputDataDecoder = require('ethereum-input-data-decoder')
+const sleep = require('sleep-promise')
 
 const ERC20_ABI = require('./src/abi_erc20')
 const QIDAO_VAULT_ABI = require("./src/qidao_vault_abi.json")
@@ -24,8 +25,11 @@ let GAS_PRICE_MIN = 100 * (10 ** 9)
 let GAS_PRICE_MAX = 1000 * (10 ** 9)
 let GAS_PRICE = parseInt((GAS_PRICE_MIN  + GAS_PRICE_MAX) / 2)
 
-const NETWORK_NAME = "matic"
+const NETWORK_NAME = process.env.NETWORK_NAME || "matic"
 const NETWORK = NETWORKS[NETWORK_NAME]
+if (!NETWORK) {
+  throw (`Network <${NETWORK_NAME}> not supported`)
+}
 const NETWORK_CONTRACTS = NETWORK["constracts"]
 const QIDAO_VAULTS = NETWORK["qidao_vaults"]
 
@@ -75,6 +79,9 @@ async function get_all_qidao_vaults(pool_contract_address, cost_value) {
   for (let i = 0; i < max_vault_nr; i++) {
     try {
       let is_liquidable = await pool_contract.checkLiquidation(i);
+      if (i % 50 == 0 && i > 0) {
+        console.log(`Checked ${i} ${tokenName} vaults so far...`)
+      }
       if (is_liquidable) {
         let check_extract = (parseInt(await pool_contract.checkExtract(i)) / 10 ** 18).toFixed(4)
         let check_cost = (parseInt(await pool_contract.checkCost(i)) / 10 ** 18).toFixed(4)
@@ -88,7 +95,9 @@ async function get_all_qidao_vaults(pool_contract_address, cost_value) {
           console.log(`Vault ${i} is liquidable ${is_liquidable}. Cost and extract: ${check_cost} MAI, ${check_extract} ${tokenName}, collat % ${check_collateral_percentage}`)
         }
       }
-    } catch (ex) {}
+    } catch (ex) {
+      console.log(`${ex}`)
+    }
   }
 }
 
@@ -106,7 +115,7 @@ async function main() {
   console.log(`Gas price used: ${gasPriceHuman} gwei.`)
 
   if (process.argv[2] == 'find_liquidations') {
-    let vaults = Object.keys(QIDAO_VAULTS)
+    let vaults = Object.keys(QIDAO_VAULTS).slice(0, 2)
     let cost_value = process.argv[3] || 0
     for (let i = 0; i < vaults.length; i++) {
       let vault_name = vaults[i]
