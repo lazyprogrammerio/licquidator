@@ -70,6 +70,48 @@
       "mooBooETH-FTM": "beefy-spooky-eth-ftm",
       "mooBIFI": "beefy-bifi"
     }
+  },
+  "avax": {
+    "rpc": {
+      "url": "https://api.avax.network/ext/bc/C/rpc"
+    },
+    "qidao_vaults": {
+      "moaAVXMVT": "0xfA19c1d104F4AEfb8d5564f02B3AdCa1b515da58"
+    },
+    "qidao_vaults_url_slug": {
+      "moaAVXMVT": "beefy-aave-avax"
+    }
+  },
+
+  "arbitrum": {
+    "rpc": {
+      "url": "https://arb1.arbitrum.io/rpc"
+    },
+    "qidao_vaults": {
+      "AEMVT": "0xf5c2b1b92456fe1b1208c63d8ea040d464f74a72"
+    },
+    "qidao_vaults_url_slug": {
+      "AEMVT": "weth"
+    }
+  },
+
+  "moonriver": {
+    "rpc": {
+      "url": "https://rpc.moonriver.moonbeam.network"
+    },
+    "qidao_vaults": {
+      "ETHMVT": "0x4a0474E3262d4DB3306Cea4F207B5d66eC8E0AA9",
+      "mooSolar-ETHUSDCMVT": "0x97D811A7eb99Ef4Cb027ad59800cE27E68Ee1109",
+      "MOVRMVT": "0x5dB6617DDF077d76CFD9d7fC0Fa91aAabc3da683",
+      "mooSolar-ETHUSDCMVT": "0x97D811A7eb99Ef4Cb027ad59800cE27E68Ee1109",
+      "mooSolar-MOVRUSDCMVT": "0xF4fa968578723580935a00d1e12Fe96Bc6401947"
+    },
+    "qidao_vaults_url_slug": {
+      "ETHMVT": "eth",
+      "mooSolar-ETHUSDCMVT": "moo-solar-eth-usdc",
+      "mooSolar-MOVRUSDCMVT": "moo-solar-movr-usdc",
+      "MOVRMVT": "movr"
+    }
   }
 }
 
