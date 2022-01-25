@@ -93,7 +93,7 @@ async function get_all_qidao_vaults(pool_contract_address, cost_value, vault_nam
           check_collateral_percentage = (parseInt(await pool_contract.checkCollateralPercentage(i))).toFixed(4)
         }
         if (check_cost >= cost_value) {
-          let slug = QIDAO_URL_SLUGS[vault_name]
+          let slug = QIDAO_URL_SLUGS[vault_name] || vault_name
           console.log(`Vault ${vault_name} ${i} is liquidable ${is_liquidable}. Cost and extract: ${check_cost} MAI, ${check_extract} ${tokenName}, collat % ${check_collateral_percentage}. app.mai.finance/vaults/${slug}/${i}`)
         }
       }
