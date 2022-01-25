@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "exit 1"
+    "find_liquidations": "node client.js find_liquidations $MIN_MAI_COST"
   },
   "author": "thelickuidator",
   "license": "ISC",
