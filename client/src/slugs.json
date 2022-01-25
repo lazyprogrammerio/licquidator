@@ -1,0 +1,310 @@
+La = [{
+            slug: "camwmatic",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/qi-dao-amwmatic-vaults",
+            vaultAddress: "0x88d84a85A87ED12B8f098e8953B322fF789fCD1a",
+            token: new N.q(N.b.MATIC,"0x7068ea5255cb05931efa8026bd04b18f3deb8b0b",18,"camWMATIC","Compounding Aave Market MATIC"),
+            minimumCDR: 135,
+            aaveId: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf12700xd05e3e715d945b59290df0ae8ef85c1bdb684744",
+            camMeta: {
+                zappable: !0,
+                underlying: new N.q(N.b.MATIC,"0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",18,"WMATIC","Wrapped MATIC"),
+                amToken: new N.q(N.b.MATIC,"0x8dF3aad3a84da6b69A4DA8aeC3eA40d9091B2Ac4",18,"amWMATIC","Aave Matic Market WMATIC"),
+                camToken: new N.q(N.b.MATIC,"0x7068Ea5255cb05931EFa8026Bd04b18F3DeB8b0B",18,"camWMATIC","Compounding Aave Market Wrapped MATIC")
+            }
+        }, {
+            slug: "weth",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/mai-finance-weth-vaults",
+            vaultAddress: "0x3fd939B017b31eaADF9ae50C7fF7Fa5c0661d47C",
+            token: new N.q(N.b.MATIC,"0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",18,"WETH","Wrapped Ether"),
+            minimumCDR: 130
+        }, {
+            slug: "camweth",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/mai-finance-cam-weth-vaults",
+            vaultAddress: "0x11A33631a5B5349AF3F165d2B7901A4d67e561ad",
+            token: new N.q(N.b.MATIC,"0x0470cd31c8fcc42671465880ba81d631f0b76c1d",18,"camWETH","Compounding Aave Market WETH"),
+            minimumCDR: 135,
+            aaveId: "0x7ceb23fd6bc0add59e62ac25578270cff1b9f6190xd05e3e715d945b59290df0ae8ef85c1bdb684744",
+            camMeta: {
+                zappable: !0,
+                underlying: new N.q(N.b.MATIC,"0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",18,"WETH","Wrapped Ether"),
+                amToken: new N.q(N.b.MATIC,"0x28424507fefb6f7f8E9D3860F56504E4e5f5f390",18,"amWETH","Aave Matic Market WETH"),
+                camToken: new N.q(N.b.MATIC,"0x0470cd31c8fcc42671465880ba81d631f0b76c1d",18,"camWETH","Compounding Aave Market WETH")
+            }
+        }, {
+            slug: "camaave",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/mai-finance-cam-aave-vaults",
+            vaultAddress: "0x578375c3af7d61586c2C3A7BA87d2eEd640EFA40",
+            token: new N.q(N.b.MATIC,"0xeA4040B21cb68afb94889cB60834b13427CFc4EB",18,"camAAVE","Compounding Aave Market AAVE"),
+            minimumCDR: 135,
+            aaveId: "0xd6df932a45c0f255f85145f286ea0b292b21c90b0xd05e3e715d945b59290df0ae8ef85c1bdb684744",
+            camMeta: {
+                zappable: !0,
+                underlying: new N.q(N.b.MATIC,"0xD6DF932A45C0f255f85145f286eA0b292B21C90B",18,"AAVE","Aave"),
+                amToken: new N.q(N.b.MATIC,"0x1d2a0E5EC8E5bBDCA5CB219e649B565d8e5c3360",18,"amAAVE","Aave Matic Market AAVE"),
+                camToken: new N.q(N.b.MATIC,"0xeA4040B21cb68afb94889cB60834b13427CFc4EB",18,"camAAVE","Compounding Aave Market AAVE")
+            }
+        }, {
+            slug: "aave",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/mai-finance-aave-vaults",
+            vaultAddress: "0x87ee36f780ae843A78D5735867bc1c13792b7b11",
+            token: new N.q(N.b.MATIC,"0xD6DF932A45C0f255f85145f286eA0b292B21C90B",18,"AAVE","Aave"),
+            minimumCDR: 130
+        }, {
+            slug: "link",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/mai-finance-link-vaults",
+            vaultAddress: "0x61167073E31b1DAd85a3E531211c7B8F1E5cAE72",
+            token: new N.q(N.b.MATIC,"0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",18,"LINK","ChainLink Token"),
+            minimumCDR: 130
+        }, {
+            slug: "crv",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/mai-finance-curve-vaults",
+            vaultAddress: "0x98B5F32dd9670191568b661a3e847Ed764943875",
+            token: new N.q(N.b.MATIC,"0x172370d5Cd63279eFa6d502DAB29171933a610AF",18,"CRV","Curve Dao Token"),
+            minimumCDR: 130
+        }, {
+            slug: "wbtc",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/qi-dao-wbtc-vaults",
+            vaultAddress: "0x37131aEDd3da288467B6EBe9A77C523A700E6Ca1",
+            token: new N.q(N.b.MATIC,"0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",8,"WBTC","Wrapped BTC"),
+            minimumCDR: 130
+        }, {
+            slug: "camwbtc",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/qi-dao-cam-wbtc-vaults",
+            vaultAddress: "0x7dDA5e1A389E0C1892CaF55940F5fcE6588a9ae0",
+            token: new N.q(N.b.MATIC,"0xBa6273A78a23169e01317bd0f6338547F869E8Df",8,"camWBTC","Compounding Aave Market WBTC"),
+            minimumCDR: 135,
+            aaveId: "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd60xd05e3e715d945b59290df0ae8ef85c1bdb684744",
+            camMeta: {
+                zappable: !0,
+                underlying: new N.q(N.b.MATIC,"0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",8,"WBTC","Wrapped BTC"),
+                amToken: new N.q(N.b.MATIC,"0x5c2ed810328349100A66B82b78a1791B101C9D61",8,"amWBTC","Aave Matic Market WBTC"),
+                camToken: new N.q(N.b.MATIC,"0xBa6273A78a23169e01317bd0f6338547F869E8Df",8,"camWBTC","Compounding Aave Market WBTC")
+            }
+        }, {
+            slug: "bal-old",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/qi-dao-bal-vaults",
+            vaultAddress: "0xf6906b1Cf79Ab14c79DdC7D763c1A517cF9968A5",
+            token: new N.q(N.b.MATIC,"0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3",18,"BAL OLD","Balancer"),
+            minimumCDR: 130,
+            deprecated: !0
+        }, {
+            slug: "dquick-old",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/qi-dao-dquick-vaults",
+            vaultAddress: "0x9e6e3e8161Fffb31a6030E56a3E024842567154F",
+            token: new N.q(N.b.MATIC,"0xf28164A485B0B2C90639E47b0f377b4a438a16B1",18,"dQUICK OLD","Dragon QUICK"),
+            minimumCDR: 130,
+            deprecated: !0
+        }, {
+            slug: "bal",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/qi-dao-bal-vaults-v2",
+            vaultAddress: "0x701A1824e5574B0b6b1c8dA808B184a7AB7A2867",
+            token: new N.q(N.b.MATIC,"0x9a71012B13CA4d3D0Cdc72A177DF3ef03b0E76A3",18,"BAL","Balancer"),
+            minimumCDR: 130
+        }, {
+            slug: "dquick",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/qi-dao-dquick-vaults-v2",
+            vaultAddress: "0x649Aa6E6b6194250C077DF4fB37c23EE6c098513",
+            token: new N.q(N.b.MATIC,"0xf28164A485B0B2C90639E47b0f377b4a438a16B1",18,"dQUICK","Dragon QUICK"),
+            minimumCDR: 130
+        }, {
+            slug: "ghst",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/qi-dao-ghst-vaults",
+            vaultAddress: "0xF086dEdf6a89e7B16145b03a6CB0C0a9979F1433",
+            token: new N.q(N.b.MATIC,"0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7",18,"GHST","Aavegotchi GHST"),
+            minimumCDR: 130
+        }, {
+            slug: "camdai",
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/qi-dao-camdai-vaults",
+            vaultAddress: "0xD2FE44055b5C874feE029119f70336447c8e8827",
+            token: new N.q(N.b.MATIC,"0xe6c23289ba5a9f0ef31b8eb36241d5c800889b7b",18,"camDAI","Compounding Aave Market DAI"),
+            minimumCDR: 110,
+            aaveId: "0x8f3cf7ad23cd3cadbd9735aff958023239c6a0630xd05e3e715d945b59290df0ae8ef85c1bdb684744",
+            camMeta: {
+                zappable: !0,
+                underlying: new N.q(N.b.MATIC,"0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",18,"DAI","Dai Stablecoin"),
+                amToken: new N.q(N.b.MATIC,"0x27F8D03b3a2196956ED754baDc28D73be8830A6e",18,"amDAI","Aave Matic Market DAI"),
+                camToken: new N.q(N.b.MATIC,"0xE6C23289Ba5A9F0Ef31b8EB36241D5c800889b7b",18,"camDAI","Compounding Aave Matic Market DAI")
+            }
+        }, {
+            slug: "sdam3crv",
+            vaultAddress: "0x57Cbf36788113237D64E46f25A88855c3dff1691",
+            subgraph: "",
+            minimumCDR: 135,
+            token: new N.q(N.b.MATIC,"0x7d60F21072b585351dFd5E8b17109458D97ec120",18,"sdam3CRV","Stake DAO am3CRV Strategy")
+        }], Wa = (Te = {},
+        Object(W.a)(Te, N.b.AVALANCHE, []),
+        Object(W.a)(Te, N.b.FANTOM, [{
+            slug: "ftm",
+            vaultAddress: "0x1066b8FC999c1eE94241344818486D5f944331A0",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",18,"FTM","Fantom"),
+            minimumCDR: 130,
+            native: !0,
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/qi-dao-fantom-vaults"
+        }, {
+            slug: "yvwftm",
+            vaultAddress: "0x7efB260662a6FA95c1CE1092c53Ca23733202798",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0x0DEC85e74A92c52b7F708c4B10207D9560CEFaf0",18,"yvWFTM","Yearn Fantom"),
+            minimumCDR: 135,
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/qi-dao-yvwftm-vaults"
+        }, {
+            slug: "yvwdai",
+            vaultAddress: "0x682E473FcA490B0adFA7EfE94083C1E63f28F034",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0x637eC617c86D24E421328e6CAEa1d92114892439",18,"yvDAI","Yearn DAI"),
+            minimumCDR: 110,
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/qi-dao-yvdai-vaults"
+        }, {
+            slug: "ftmweth",
+            vaultAddress: "0xD939c268C49c442F037E968F045ba02f499562D4",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0x74b23882a30290451A17c44f4F05243b6b58C76d",18,"ETH","Ethereum"),
+            minimumCDR: 135,
+            subgraph: "https://api.thegraph.com/subgraphs/name/0xlaozi/qi-dao-fantom-eth-vaults"
+        }, {
+            slug: "aave",
+            vaultAddress: "0xdB09908b82499CAdb9E6108444D5042f81569bD9",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0x6a07A792ab2965C72a5B8088d3a069A7aC3a993B",18,"AAVE","Aave"),
+            minimumCDR: 130
+        }, {
+            slug: "sushi",
+            vaultAddress: "0x267bDD1C19C932CE03c7A62BBe5b95375F9160A6",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0xae75A438b2E0cB8Bb01Ec1E1e376De11D44477CC",18,"SUSHI","Sushi"),
+            minimumCDR: 130
+        }, {
+            slug: "link",
+            vaultAddress: "0xd6488d586E8Fcd53220e4804D767F19F5C846086",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0xb3654dc3D10Ea7645f8319668E8F54d2574FBdC8",18,"LINK","ChainLink"),
+            minimumCDR: 130
+        }, {
+            slug: "btc",
+            vaultAddress: "0xE5996a2cB60eA57F03bf332b5ADC517035d8d094",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0x321162Cd933E2Be498Cd2267a90534A804051b11",8,"BTC","Bitcoin"),
+            minimumCDR: 130
+        }, {
+            slug: "beefy-scream-wbtc",
+            vaultAddress: "0x5563Cc1ee23c4b17C861418cFF16641D46E12436",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0x97927aBfE1aBBE5429cBe79260B290222fC9fbba",18,"mooScreamWBTC","Beefy Scream WBTC"),
+            minimumCDR: 135
+        }, {
+            slug: "beefy-scream-dai",
+            vaultAddress: "0xBf0ff8ac03f3E0DD7d8faA9b571ebA999a854146",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0x920786cff2A6f601975874Bb24C63f0115Df7dc8",18,"mooScreamDAI","Beefy Scream DAI"),
+            minimumCDR: 135
+        }, {
+            slug: "beefy-scream-eth",
+            vaultAddress: "0xC1c7eF18ABC94013F6c58C6CdF9e829A48075b4e",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0x0a03D2C1cFcA48075992d810cc69Bd9FE026384a",18,"mooScreamETH","Beefy Scream ETH"),
+            minimumCDR: 135
+        }, {
+            slug: "beefy-scream-ftm",
+            vaultAddress: "0x3609A304c6A41d87E895b9c1fd18c02ba989Ba90",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0x49c68eDb7aeBd968F197121453e41b8704AcdE0C",18,"mooScreamFTM","Beefy Scream FTM"),
+            minimumCDR: 135
+        }, {
+            slug: "beefy-scream-link",
+            vaultAddress: "0x8e5e4D08485673770Ab372c05f95081BE0636Fa2",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0x6DfE2AAEA9dAadADf0865B661b53040E842640f8",18,"mooScreamLINK","Beefy Scream LINK"),
+            minimumCDR: 135
+        }, {
+            slug: "beefy-spooky-btc-ftm",
+            vaultAddress: "0xF34e271312e41Bbd7c451B76Af2AF8339D6f16ED",
+            deprecated: !0,
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0xA3e3Af161943CfB3941B631676134bb048739727",18,"mooBooBTC-FTM","Beefy SpookySwap BTC-FTM LP"),
+            minimumCDR: 135
+        }, {
+            slug: "beefy-spooky-eth-ftm",
+            vaultAddress: "0x9BA01B1279B1F7152b42aCa69fAF756029A9ABDe",
+            deprecated: !0,
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0x2a30C5e0d577108F694d2A96179cd73611Ee069b",18,"mooBooETH-FTM","Beefy SpookySwap ETH-FTM LP"),
+            minimumCDR: 135
+        }, {
+            slug: "beefy-bifi",
+            vaultAddress: "0x75D4aB6843593C111Eeb02Ff07055009c836A1EF",
+            chainId: N.b.FANTOM,
+            token: new N.q(N.b.FANTOM,"0xbF07093ccd6adFC3dEB259C557b61E94c1F66945",18,"mooFantomBIFI","Beefy Staked BIFI"),
+            minimumCDR: 140
+        }]),
+        Object(W.a)(Te, N.b.AVALANCHE, [{
+            slug: "beefy-aave-avax",
+            vaultAddress: "0xfA19c1d104F4AEfb8d5564f02B3AdCa1b515da58",
+            chainId: N.b.AVALANCHE,
+            token: new N.q(N.b.AVALANCHE,"0x1B156C5c75E9dF4CAAb2a5cc5999aC58ff4F9090",18,"mooAaveAVAX","Beefy Aave AVAX"),
+            minimumCDR: 135
+        }]),
+        Object(W.a)(Te, N.b.ARBITRUM, [{
+            slug: "weth",
+            deprecated: !0,
+            vaultAddress: "0xf5c2b1b92456fe1b1208c63d8ea040d464f74a72",
+            chainId: N.b.ARBITRUM,
+            token: new N.q(N.b.ARBITRUM,"0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",18,"WETH","Wrapped Ether"),
+            minimumCDR: 135
+        }]),
+        Object(W.a)(Te, N.b.MOONRIVER, [{
+            slug: "eth",
+            vaultAddress: "0x4a0474E3262d4DB3306Cea4F207B5d66eC8E0AA9",
+            chainId: N.b.MOONRIVER,
+            token: new N.q(N.b.MOONRIVER,"0x639A647fbe20b6c8ac19E48E2de44ea792c62c5C",18,"ETH","Ethereum"),
+            minimumCDR: 130
+        }, {
+            slug: "moo-solar-eth-usdc",
+            vaultAddress: "0x97D811A7eb99Ef4Cb027ad59800cE27E68Ee1109",
+            deprecated: !0,
+            chainId: N.b.MOONRIVER,
+            token: new N.q(N.b.MOONRIVER,"0x932009984bd2a7dA8C6396694E811Da5C0952d05",18,"mooSolarETH-USDC","Beefy Solarbeam ETH-USDC LP"),
+            minimumCDR: 135
+        }, {
+            slug: "movr",
+            native: !0,
+            vaultAddress: "0x5dB6617DDF077d76CFD9d7fC0Fa91aAabc3da683",
+            chainId: N.b.MOONRIVER,
+            token: new N.q(N.b.MOONRIVER,"0x98878B06940aE243284CA214f92Bb71a2b032B8A",18,"MOVR","Moonriver"),
+            minimumCDR: 130
+        }, {
+            slug: "moo-solar-movr-usdc",
+            vaultAddress: "0xF4fa968578723580935a00d1e12Fe96Bc6401947",
+            deprecated: !0,
+            chainId: N.b.MOONRIVER,
+            token: new N.q(N.b.MOONRIVER,"0x78Dc4b7C7A89812fb337dD8C3B0ccB3e04E02D7C",18,"mooSolarMOVR-USDC","Beefy Solarbeam MOVR-USDC LP"),
+            minimumCDR: 135
+        }]),
+        Object(W.a)(Te, N.b.HARMONY, [{
+            slug: "eth",
+            vaultAddress: "0x46469f995A5CB60708200C25EaD3cF1667Ed36d6",
+            chainId: N.b.HARMONY,
+            token: new N.q(N.b.HARMONY,"0x6983d1e6def3690c4d616b13597a09e6193ea013",18,"1ETH","Wrapped Ethereum"),
+            minimumCDR: 130
+        }, {
+            slug: "one",
+            vaultAddress: "0x12FcB286D664F37981a42cbAce92eAf28d1dA94f",
+            native: !0,
+            chainId: N.b.HARMONY,
+            token: new N.q(N.b.HARMONY,"0xcF664087a5bB0237a0BAd6742852ec6c8d69A27a",18,"ONE","Harmony (ONE)"),
+            minimumCDR: 130
+        }, {
+            slug: "btc_old",
+            vaultAddress: "0x9f4E3d01c634441F284beb92bBAEeb76133BbB28",
+            deprecated: !0,
+            chainId: N.b.HARMONY,
+            token: new N.q(N.b.HARMONY,"0x3095c7557bCb296ccc6e363DE01b760bA031F2d9",8,"1WBTC OLD","Wrapped Bitcoin OLD"),
+            minimumCDR: 130
+        }, {
+            slug: "btc",
+            vaultAddress: "0x4592e0bcf01121757e70404915f220a77ffb4e15",
+            chainId: N.b.HARMONY,
+            token: new N.q(N.b.HARMONY,"0x3095c7557bCb296ccc6e363DE01b760bA031F2d9",8,"1WBTC","Wrapped Bitcoin"),
+            minimumCDR: 130,
+            deprecated: !0
+        }]),

@@ -32,6 +32,7 @@ if (!NETWORK) {
 }
 const NETWORK_CONTRACTS = NETWORK["constracts"]
 const QIDAO_VAULTS = NETWORK["qidao_vaults"]
+const QIDAO_URL_SLUGS = NETWORK["qidao_vaults_url_slug"]
 
 const HTTP_PROVIDER = process.env.PRIVATE_POLYGON_RPC || NETWORK.rpc.url
 
@@ -64,7 +65,7 @@ async function reason(provider, hash) {
     }
 }
 
-async function get_all_qidao_vaults(pool_contract_address, cost_value) {
+async function get_all_qidao_vaults(pool_contract_address, cost_value, vault_name) {
   let abi = QIDAO_VAULT_ABI_WETH
   let max_vault_nr = 100
   let tokenName = ''
@@ -92,7 +93,8 @@ async function get_all_qidao_vaults(pool_contract_address, cost_value) {
           check_collateral_percentage = (parseInt(await pool_contract.checkCollateralPercentage(i))).toFixed(4)
         }
         if (check_cost >= cost_value) {
-          console.log(`Vault ${i} is liquidable ${is_liquidable}. Cost and extract: ${check_cost} MAI, ${check_extract} ${tokenName}, collat % ${check_collateral_percentage}`)
+          let slug = QIDAO_URL_SLUGS[vault_name]
+          console.log(`Vault ${vault_name} ${i} is liquidable ${is_liquidable}. Cost and extract: ${check_cost} MAI, ${check_extract} ${tokenName}, collat % ${check_collateral_percentage}. app.mai.finance/vaults/${slug}/${i}`)
         }
       }
     } catch (ex) {
@@ -115,13 +117,13 @@ async function main() {
   console.log(`Gas price used: ${gasPriceHuman} gwei.`)
 
   if (process.argv[2] == 'find_liquidations') {
-    let vaults = Object.keys(QIDAO_VAULTS).slice(0, 2)
+    let vaults = Object.keys(QIDAO_VAULTS)
     let cost_value = process.argv[3] || 0
     for (let i = 0; i < vaults.length; i++) {
       let vault_name = vaults[i]
       let pool_contract = QIDAO_VAULTS[vault_name]
       console.log(`Getting all pools for ${pool_contract} ${vault_name} with cost value higher than ${cost_value} MAI`)
-      get_all_qidao_vaults(pool_contract, cost_value)
+      get_all_qidao_vaults(pool_contract, cost_value, vault_name)
     }
   }
 

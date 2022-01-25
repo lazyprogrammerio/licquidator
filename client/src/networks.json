@@ -28,10 +28,9 @@
 
   "ftm": {
     "rpc": {
-      "url": "https://rpc.ftm.tools/"
+      "url": "https://ftmrpc.ultimatenodes.io/"
     },
     "qidao_vaults": {
-      "FEMVT": "0xD939c268C49c442F037E968F045ba02f499562D4",
       "mBIFIMVT": "0x75D4aB6843593C111Eeb02Ff07055009c836A1EF",
       "WFTM": "0x1066b8FC999c1eE94241344818486D5f944331A0",
       "WETH": "0xD939c268C49c442F037E968F045ba02f499562D4",
@@ -49,6 +48,25 @@
       "mooBooBTC-FTM": "0xf34e271312e41bbd7c451b76af2af8339d6f16ed",
       "mooBooETH-FTM": "0x9ba01b1279b1f7152b42aca69faf756029a9abde",
       "mooBIFI": "0x75d4ab6843593c111eeb02ff07055009c836a1ef"
+    },
+    "qidao_vaults_url_slug": {
+      "mBIFIMVT": "beefy-bifi",
+      "WFTM": "ftm",
+      "WETH": "ftmweth",
+      "yvWFTM": "yvwftm",
+      "yvDAI": "yvwdai",
+      "BTC": "btc",
+      "LINK": "link",
+      "SUSHI": "sushi",
+      "AAVE": "aave",
+      "mooScreamFTM": "beefy-scream-ftm",
+      "mooScreamETH": "beefy-scream-eth",
+      "mooScreamBTC": "beefy-scream-wbtc",
+      "mooScreamLINK": "beefy-scream-link",
+      "mooScreamDAI": "beefy-scream-dai",
+      "mooBooBTC-FTM": "beefy-spooky-btc-ftm",
+      "mooBooETH-FTM": "beefy-spooky-eth-ftm",
+      "mooBIFI": "beefy-bifi"
     }
   }
 }
