@@ -82,7 +82,21 @@ async function get_all_qidao_vaults(network_name, pool_contract_address, signer,
   }
 }
 
+async function get_vault_info(network_name, signer, vault_type, vault_id) {
+  let NETWORK = NETWORKS[network_name]
+  if (!NETWORK) {
+    throw (`Network <${network_name}> not supported`)
+  }
+  const NETWORK_CONTRACTS = NETWORK["constracts"]
+  const QIDAO_VAULTS = NETWORK["qidao_vaults"]
+
+  let vault_info = {}
+
+  return vault_info
+}
+
 module.exports = {
-     get_all_qidao_vaults
+     get_all_qidao_vaults,
+     get_vault_info
 }
 

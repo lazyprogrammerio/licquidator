@@ -64,6 +64,18 @@ async function main() {
       UTILS.get_all_qidao_vaults(NETWORK_NAME, pool_contract, signer, cost_value, vault_name)
     }
   }
+
+  if (process.argv[2] == 'get_vault') {
+    vaultType = process.argv[3]
+    vaultId = process.argv[4]
+
+    console.log(`Getting information for vault type {vaultType} and id ${vaultId}`)
+
+    let vaultInfo = await UTILS.get_vault_info(NETWORK_NAME, signer, vaultType, vaultId)
+
+    console.log(vaultInfo)
+  }
+
 }
 
 main()
