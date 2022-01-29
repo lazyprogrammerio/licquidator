@@ -76,6 +76,27 @@ async function main() {
     console.log(vaultInfo)
   }
 
+  if (process.argv[2] == 'find_big_liquidations') {
+    let vaultType = process.argv[3]
+    let max_vaults = parseInt(process.argv[4])
+    let vaults = []
+    let concurrentJobs = []
+    for (let i = 0; i < max_vaults; i++) {
+      concurrentJobs.push(UTILS.get_vault_info(NETWORK_NAME, signer, vaultType, i))
+    }
+    for (let i = 0; i < max_vaults; i++) {
+      vaults.push(await(concurrentJobs[i]))
+    }
+    let orderedVaults = vaults.filter(function(a) {
+      return a.mai_debt > 1000 && a.collateral_to_debt < 175
+    })
+    orderedVaults = orderedVaults.sort(function(a, b) {
+      return a.mai_debt - b.mai_debt
+    })
+
+    console.log(orderedVaults)
+  }
+
 }
 
 main()
