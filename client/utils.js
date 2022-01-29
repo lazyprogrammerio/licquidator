@@ -151,7 +151,8 @@ async function get_vault_info(network_name, signer, vault_type, vault_id) {
   }
 
   try {
-    vault_info.collateral = (await vault_contract.vaultCollateral(vault_id) / 10 ** collateral_decimals).toString()
+    vault_info.collateral_raw = await vault_contract.vaultCollateral(vault_id)
+    vault_info.collateral = (vault_info.collateral_raw / 10 ** collateral_decimals).toString()
   } catch {
     console.log(`Vault vault_info.collateral cannot be retrieved`)
   }
@@ -180,7 +181,36 @@ async function get_vault_info(network_name, signer, vault_type, vault_id) {
     console.log(`Vault vault_info.is_liquidable cannot be retrieved`)
   }
 
-  return vault_info
+ try {
+   vault_info.mai_debt_raw = await vault_contract.vaultDebt(vault_id)
+   vault_info.mai_debt = (await vault_contract.vaultDebt(vault_id) / 10 ** collateral_decimals).toString()
+ } catch {
+   console.log(`Vault vault_info.mai_debt cannot be retrieved`)
+ }
+
+ try {
+   vault_info.mai_contract = (await vault_contract.mai())
+ } catch {
+   console.log(`Vault vault_info.mai_contract cannot be retrieved`)
+ }
+ if (vault_info.mai_contract.toLowerCase() != "0xa3Fa99A148fA48D14Ed51d610c367C61876997F1".toLowerCase()) {
+   throw (`MAI contract does not match the correct one ${vault_info.mai_contract}`)
+ }
+
+ try {
+   vault_info.collateral_usdc_price = (await vault_contract.getEthPriceSource() / 10 ** 8).toString()
+   vault_info.collateral_usdc_price_raw = parseInt(await vault_contract.getEthPriceSource())
+ } catch {
+   console.log(`Vault vault_info.vault_info.collateral_usdc_price cannot be retrieved`)
+ }
+ 
+  vault_info.debt_usdc = vault_info.mai_debt
+  vault_info.collateral_usdc_raw = vault_info.collateral_usdc_price_raw * vault_info.collateral_raw
+  vault_info.collateral_usdc = vault_info.collateral_usdc_raw / 10 ** 18 / 10 ** 8
+  vault_info.collateral_to_debt = vault_info.collateral_usdc_raw / vault_info.debt_usdc / 10 ** (18 + 8 - 2)
+
+
+ return vault_info
 }
 
 module.exports = {
