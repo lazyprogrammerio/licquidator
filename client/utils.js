@@ -7,6 +7,10 @@ const sleep = require('sleep-promise')
 const ERC20_ABI = require('./src/abi_erc20')
 const QIDAO_VAULT_ABI = require("./src/qidao_vault_abi.json")
 const QIDAO_VAULT_ABI_WETH = require("./src/qidao_vault_abi_weth.json")
+
+const CHAINLINK_PRICE_SOURCE_ABI = require("./src/chainlink_price_source_abi.json")
+const CHAINLINK_PRICE_SOURCE_CAM_ABI = require("./src/chainlink_price_source_cam_abi.json")
+
 const NETWORKS = require("./src/networks.json")
 
 let DECODER = new InputDataDecoder(ERC20_ABI)
@@ -107,29 +111,74 @@ async function get_vault_info(network_name, signer, vault_type, vault_id) {
     // this is the chainlink decimal I think
     //collateral_decimals = vault_info.collateral_decimals
   } catch (ex) {
-    console.log(ex)
-    throw (`Vault ${vault_type}:${vault_id} does not exist`)
+    console.log(`Vault vault_info.collateral_decimals cannot be retrieved`)
+    //throw (`Vault ${vault_type}:${vault_id} does not exist`)
+  }
+
+  try {
+    vault_info.min_collateral_percentage = (await vault_contract._minimumCollateralPercentage()).toString()
+  } catch (ex){
+    console.log(`Vault vault_info.min_collateral_percentage cannot be retrieved`)
+  }
+
+  try {
+    vault_info.price_source_address = (await vault_contract.ethPriceSource())
+  } catch (ex) {
+    console.log(`Vault vault_info.price_source_address cannot be retrieved`)
+  }
+
+  try {
+    let chainlink_price_source_contract = await new ethers.Contract(vault_info.price_source_address, CHAINLINK_PRICE_SOURCE_ABI, signer)
+    vault_info.price_source_aggregator_address = await chainlink_price_source_contract.aggregator()
+  } catch (ex) {
+    console.log(`Vault vault_info.price_source_aggregator_address cannot be retrieved, maybe a wrapped token.`)
+    // if there is no aggregator, it means this is a CAM token
+    // with underlying shares
+    try {
+      let chainlink_price_source_cam_contract = await new ethers.Contract(vault_info.price_source_address, CHAINLINK_PRICE_SOURCE_CAM_ABI, signer)
+      vault_info.price_source_aggregator_address_intermediate = await chainlink_price_source_cam_contract.priceSource()
+      let chainlink_price_source_contract_last = await new ethers.Contract(vault_info.price_source_aggregator_address_intermediate, CHAINLINK_PRICE_SOURCE_ABI, signer)
+      vault_info.price_source_aggregator_address = await chainlink_price_source_contract_last.aggregator()
+    } catch(ex) {
+      console.log(`Vault vault_info.price_source_aggregator_address cannot be retrieved, maybe a double wrapped token.`)
+    }
+  }
+
+  try {
+    vault_info.collateral_address = (await vault_contract.collateral())
+  } catch {
+    console.log(`Vault vault_info.collateral_address cannot be retrieved`)
   }
 
   try {
     vault_info.collateral = (await vault_contract.vaultCollateral(vault_id) / 10 ** collateral_decimals).toString()
-  } catch {}
+  } catch {
+    console.log(`Vault vault_info.collateral cannot be retrieved`)
+  }
 
   try {
     vault_info.cost = (await vault_contract.checkCost(vault_id) / 10 ** collateral_decimals).toString()
-  } catch {}
+  } catch {
+    console.log(`Vault vault_info.cost cannot be retrieved`)
+  }
 
   try {
     vault_info.collateral_percentage = (await vault_contract.checkCollateralPercentage(vault_id)).toString()
-  } catch {}
+  } catch {
+    console.log(`Vault vault_info.collateral_percentage cannot be retrieved`)
+  }
 
   try {
     vault_info.extract = (await vault_contract.checkExtract(vault_id) / 10 ** collateral_decimals).toString()
-  } catch {}
+  } catch {
+    console.log(`Vault vault_info.extract cannot be retrieved`)
+  }
 
   try {
     vault_info.is_liquidable = await vault_contract.checkLiquidation(vault_id)
-  } catch {}
+  } catch {
+    console.log(`Vault vault_info.is_liquidable cannot be retrieved`)
+  }
 
   return vault_info
 }
