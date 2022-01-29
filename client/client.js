@@ -33,7 +33,9 @@ const QIDAO_VAULTS = NETWORK["qidao_vaults"]
 const HTTP_PROVIDER = process.env.PRIVATE_POLYGON_RPC || NETWORK.rpc.url
 
 let connectionInfo = {
-  "url": HTTP_PROVIDER
+  "url": process.env.PRIVATE_POLYGON_RPC_ETHERS || HTTP_PROVIDER,
+  "user": process.env.PRIVATE_POLYGON_RPC_USER,
+  "password": process.env.PRIVATE_POLYGON_RPC_PASSWORD
 }
 
 const provider = new ethers.providers.JsonRpcProvider(connectionInfo)
