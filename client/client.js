@@ -69,7 +69,7 @@ async function main() {
     vaultType = process.argv[3]
     vaultId = process.argv[4]
 
-    console.log(`Getting information for vault type {vaultType} and id ${vaultId}`)
+    console.log(`Getting information for vault type ${vaultType} and id ${vaultId}`)
 
     let vaultInfo = await UTILS.get_vault_info(NETWORK_NAME, signer, vaultType, vaultId)
 

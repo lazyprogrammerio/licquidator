@@ -90,7 +90,46 @@ async function get_vault_info(network_name, signer, vault_type, vault_id) {
   const NETWORK_CONTRACTS = NETWORK["constracts"]
   const QIDAO_VAULTS = NETWORK["qidao_vaults"]
 
-  let vault_info = {}
+  let vault_contract_address = QIDAO_VAULTS[vault_type]
+
+  let vault_info = {
+    "id": vault_id,
+    "name": vault_type,
+    "contract": vault_contract_address,
+  }
+  
+  let abi = QIDAO_VAULT_ABI_WETH
+  let vault_contract = await new ethers.Contract(vault_contract_address, abi, signer)
+  let collateral_decimals = 18
+
+  try {
+    vault_info.collateral_decimals = parseInt(await vault_contract.collateralDecimals())
+    // this is the chainlink decimal I think
+    //collateral_decimals = vault_info.collateral_decimals
+  } catch (ex) {
+    console.log(ex)
+    throw (`Vault ${vault_type}:${vault_id} does not exist`)
+  }
+
+  try {
+    vault_info.collateral = (await vault_contract.vaultCollateral(vault_id) / 10 ** collateral_decimals).toString()
+  } catch {}
+
+  try {
+    vault_info.cost = (await vault_contract.checkCost(vault_id) / 10 ** collateral_decimals).toString()
+  } catch {}
+
+  try {
+    vault_info.collateral_percentage = (await vault_contract.checkCollateralPercentage(vault_id)).toString()
+  } catch {}
+
+  try {
+    vault_info.extract = (await vault_contract.checkExtract(vault_id) / 10 ** collateral_decimals).toString()
+  } catch {}
+
+  try {
+    vault_info.is_liquidable = await vault_contract.checkLiquidation(vault_id)
+  } catch {}
 
   return vault_info
 }
