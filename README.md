@@ -28,4 +28,10 @@ npm run find_liquidations
 
 # higher cost than 1 MAI
 MIN_MAI_COST=1 npm run find_liquidations 1
+
+# for other networks
+# supported networks: matic, avax, arbitrum, moonriver, ftm
+
+NETWORK_NAME=ftm node client.js find_liquidations 1
+
 ```
