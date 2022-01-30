@@ -209,6 +209,8 @@ async function get_vault_info(network_name, signer, vault_type, vault_id) {
   vault_info.collateral_usdc = vault_info.collateral_usdc_raw / 10 ** 18 / 10 ** 8
   vault_info.collateral_to_debt = vault_info.collateral_usdc_raw / vault_info.debt_usdc / 10 ** (18 + 8 - 2)
 
+  vault_info.liquidation_collateral_price_raw = parseInt(vault_info.min_collateral_percentage) * (vault_info.debt_usdc * 10 ** (18 + 8 - 2)) / vault_info.collateral_raw
+  vault_info.liquidation_collateral_price = vault_info.liquidation_collateral_price_raw / 10 ** (8)
 
  return vault_info
 }
