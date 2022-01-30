@@ -31,7 +31,12 @@ MIN_MAI_COST=1 npm run find_liquidations 1
 
 # for other networks
 # supported networks: matic, avax, arbitrum, moonriver, ftm
-
 NETWORK_NAME=ftm node client.js find_liquidations 1
 
+# if you want to use a specific RPC endpoint
+export PRIVATE_RPC="my_rpc"
+
+# if the RPC endpoint is username/password protected
+export PRIVATE_RPC_USERNAME="user"
+export PRIVATE_RPC_PASSWORD="password"
 ```

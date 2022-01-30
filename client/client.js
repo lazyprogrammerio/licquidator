@@ -30,12 +30,20 @@ if (!NETWORKS[NETWORK_NAME]) {
 const NETWORK = NETWORKS[NETWORK_NAME]
 const QIDAO_VAULTS = NETWORK["qidao_vaults"]
 
-const HTTP_PROVIDER = process.env.PRIVATE_POLYGON_RPC || NETWORK.rpc.url
+let RPC_USERNAME_PASS = ""
+if (process.env.PRIVATE_RPC_USERNAME && process.env.PRIVATE_RPC_PASSWORD) {
+  let rpc_username = process.env.PRIVATE_RPC_USERNAME
+  let rpc_password = process.env.PRIVATE_RPC_PASSWORD
+  RPC_USERNAME_PASS = `${rpc_username}@${rpc_username}:`
+}
+ 
+let HTTP_PROVIDER = process.env.PRIVATE_POLYGON_RPC || NETWORK.rpc.url
+HTTP_PROVIDER = `${RPC_USERNAME_PASS}${HTTP_PROVIDER}`
 
 let connectionInfo = {
-  "url": process.env.PRIVATE_POLYGON_RPC_ETHERS || HTTP_PROVIDER,
-  "user": process.env.PRIVATE_POLYGON_RPC_USER,
-  "password": process.env.PRIVATE_POLYGON_RPC_PASSWORD
+  "url": process.env.PRIVATE_RPC || NETWORK.rpc.url,
+  "user": process.env.PRIVATE_RPC_USERNAME,
+  "password": process.env.PRIVATE_RPC_PASSWORD
 }
 
 const provider = new ethers.providers.JsonRpcProvider(connectionInfo)
