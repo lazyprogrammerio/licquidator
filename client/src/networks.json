@@ -25,6 +25,21 @@
       "WBMVT": "0x37131aEDd3da288467B6EBe9A77C523A700E6Ca1"
     },
     "qidao_vaults_url_slug": {
+      "matic": "matic",
+      "WEMVT": "weth",
+      "GMVT": "ghst",
+      "camDAIMVT": "camdai",
+      "SDAM3CRVMVT": "sdam3crv",
+      "camWEMVT": "camweth",
+      "camAMVT": "camaave",
+      "dQMVT": "dquick",
+      "BMVT": "bal",
+      "CMVT": "crv",
+      "AMVT": "aave",
+      "camWBMVT": "camwbtc",
+      "cMVT": "camwmatic",
+      "LMVT": "link",
+      "WBMVT": "wbtc"
     }
   },
 
