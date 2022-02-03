@@ -40,3 +40,17 @@ export PRIVATE_RPC="my_rpc"
 export PRIVATE_RPC_USERNAME="user"
 export PRIVATE_RPC_PASSWORD="password"
 ```
+
+### How to build and deploy the liquidator contract
+
+```bash
+cd contracts
+npm install
+
+npx hardhat compile
+
+export ETHEREUM_WALLET_PRIVATE_KEY="YOUR_PRIVATE_KEY"
+
+npx hardhat run scripts/deploy.js --network matic
+
+```
